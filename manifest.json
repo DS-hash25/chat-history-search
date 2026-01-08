@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "Chat History Search for Claude & ChatGPT",
+  "description": "Search all your Claude & ChatGPT conversations. Full-text search, 100% local - your data never leaves your device.",
+  "version": "1.3.0",
+  "permissions": [
+    "storage",
+    "sidePanel",
+    "cookies"
+  ],
+  "host_permissions": [
+    "https://claude.ai/*",
+    "https://chatgpt.com/*",
+    "https://chat.openai.com/*"
+  ],
+  "background": {
+    "service_worker": "src/background/index.ts",
+    "type": "module"
+  },
+  "side_panel": {
+    "default_path": "src/sidepanel/index.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://claude.ai/*"],
+      "js": ["src/content/claude.ts"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://chatgpt.com/*", "https://chat.openai.com/*"],
+      "js": ["src/content/chatgpt.ts"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Open Chat Search"
+  },
+  "icons": {
+    "16": "public/icons/icon16.png",
+    "48": "public/icons/icon48.png",
+    "128": "public/icons/icon128.png"
+  }
+}
