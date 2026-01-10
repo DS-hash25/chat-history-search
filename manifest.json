@@ -2,9 +2,8 @@
   "manifest_version": 3,
   "name": "Chat History Search for Claude & ChatGPT",
   "description": "Search all your Claude & ChatGPT conversations. Full-text search, 100% local - your data never leaves your device.",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "permissions": [
-    "storage",
     "sidePanel",
     "cookies"
   ],
